@@ -1,64 +1,42 @@
 import React from 'react';
+import './UserDashboard.css'; // Assuming you will create a separate CSS file
 
-function UserDashboard({ addToWaitlist, waitlist }) {
-  const [name, setName] = React.useState('');
-  const [partySize, setPartySize] = React.useState(1);
+function UserDashboard({ waitlist = [] }) {
   const [userPosition, setUserPosition] = React.useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const customer = { name, partySize: parseInt(partySize, 10) };
-    addToWaitlist(customer);
-
-    // Set user's position in the waitlist
-    setUserPosition(waitlist.length + 1);
-
-    // Reset form fields
-    setName('');
-    setPartySize(1);
-  };
+  // Set user's position in the waitlist based on their name
+  React.useEffect(() => {
+    const currentUser = waitlist.find((customer) => customer.name === "Your Name"); // You can modify how you find users
+    if (currentUser) {
+      setUserPosition(waitlist.indexOf(currentUser) + 1); // Position is index + 1
+    }
+  }, [waitlist]);
 
   return (
     <div className="user-dashboard">
-      <h1>User Dashboard</h1>
-      <form onSubmit={handleSubmit} className="waitlist-form">
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="partySize">Party Size:</label>
-          <input
-            type="number"
-            id="partySize"
-            value={partySize}
-            onChange={(e) => setPartySize(e.target.value)}
-            min="1"
-            required
-          />
-        </div>
-        <button type="submit">Join Waitlist</button>
-      </form>
-
+      <h1 className="dashboard-title">Current Waitlist</h1>
+      
       {userPosition && (
         <div className="user-position">
-          <h2>You're currently #{userPosition} on the waitlist</h2>
+          <h2 className="position-text">You're currently #{userPosition} on the waitlist</h2>
         </div>
       )}
-
+      
       <div className="waitlist-summary">
-        <h2>Current Waitlist</h2>
-        {waitlist.map((customer, index) => (
-          <div key={index} className="waitlist-item">
-            {index + 1}. {customer.name} - Party of {customer.partySize}
-          </div>
-        ))}
+        <h2 className="waitlist-title">Waitlist</h2>
+        <div className="waitlist-list">
+          {waitlist.length === 0 ? (
+            <p>No customers currently on the waitlist.</p>
+          ) : (
+            waitlist.map((customer, index) => (
+              <div key={index} className="waitlist-item">
+                <span className="waitlist-index">{index + 1}</span> 
+                <span className="waitlist-name">{customer.name}</span> - 
+                <span className="waitlist-party-size">Party of {customer.partySize}</span>
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,121 @@
+/* General Layout */
+.user-dashboard {
+    background: #f4f4f9;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Styles */
+  .waitlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .form-input {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* User Position */
+  .user-position {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .position-text {
+    font-size: 1.2rem;
+    color: #28a745;
+  }
+  
+  /* Waitlist Summary */
+  .waitlist-summary {
+    margin-top: 40px;
+  }
+  
+  .waitlist-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .waitlist-list {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .waitlist-item {
+    font-size: 1rem;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .waitlist-item:last-child {
+    border-bottom: none;
+  }
+  
+  .waitlist-index {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .waitlist-name {
+    font-weight: bold;
+  }
+  
+  .waitlist-party-size {
+    color: #6c757d;
+  }
+  

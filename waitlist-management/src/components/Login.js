@@ -8,7 +8,7 @@ function Login({ setCurrentUser }) {
   const handleLogin = (e) => {
     e.preventDefault();
     // Add authentication logic here
-    setCurrentUser({ orgId, role: 'host' });
+    setCurrentUser({ orgId, role: 'host' }); // This should now work because setCurrentUser is passed as a prop
     navigate('/host-dashboard');
   };
 

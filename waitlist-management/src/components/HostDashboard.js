@@ -59,6 +59,7 @@ function HostDashboard() {
     alert(`${leavingParty.name}'s Party of ${leavingParty.partySize} has left.`);
   };
 
+  
   // Close the error modal
   const closeModal = () => {
     setIsModalOpen(false);
@@ -76,7 +77,8 @@ function HostDashboard() {
             <div key={index} className="waitlist-item">
               <span>{customer.name} - Party of {customer.partySize}</span>
               <div className="button-group">
-                <button onClick={() => seatCustomer(index)} className="seat-button">
+                <button onClick={() => seatCustomer(index)} 
+                  className="seat-button">
                   <FaChair />
                 </button>
                 <button onClick={() => removeFromWaitlist(index)} className="remove-button">
@@ -86,6 +88,7 @@ function HostDashboard() {
             </div>
           ))
         )}
+
 
         {/* Add new customer form */}
         <div className="add-customer-section">

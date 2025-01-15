@@ -4,6 +4,10 @@ import Login from './components/Login';
 import RoleSelection from './components/RoleSelection';
 import HostDashboard from './components/HostDashboard';
 import UserDashboard from './components/UserDashboard';
+import UserLogin from './components/UserLogin';
+
+// Add this new route inside your <Routes> component
+
 import './App.css'; // Ensure to import the new CSS for general layout styling
 
 function App() {
@@ -36,6 +40,7 @@ function App() {
               path="/login"
               element={<Login setCurrentUser={setCurrentUser} />} // Pass setCurrentUser as a prop
             />
+            <Route path="/user-login" element={<UserLogin />} />
             <Route
               path="/host-dashboard"
               element={

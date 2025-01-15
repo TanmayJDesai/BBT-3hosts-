@@ -1,4 +1,10 @@
 /* General Layout */
+.occupancy-summary {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #444;
+}
+
 .user-dashboard {
     background: #f4f4f9;
     padding: 20px;

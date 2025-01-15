@@ -1,45 +1,46 @@
 import React from 'react';
 import './UserDashboard.css'; // Assuming you will create a separate CSS file
 
-function UserDashboard({ waitlist = [] }) {
+function UserDashboard({ waitlist = [], occupancy = 0 }) {
   const [userPosition, setUserPosition] = React.useState(null);
 
-  // Set user's position in the waitlist based on their name
   React.useEffect(() => {
-    const currentUser = waitlist.find((customer) => customer.name === "Your Name"); // You can modify how you find users
+    const currentUser = waitlist.find((customer) => customer.name === "Your Name");
     if (currentUser) {
-      setUserPosition(waitlist.indexOf(currentUser) + 1); // Position is index + 1
+      setUserPosition(waitlist.indexOf(currentUser) + 1);
     }
   }, [waitlist]);
 
   return (
     <div className="user-dashboard">
-      <h1 className="dashboard-title">Current Waitlist</h1>
-      
+      <h1 className="dashboard-title">User Dashboard</h1>
+
       {userPosition && (
         <div className="user-position">
-          <h2 className="position-text">You're currently #{userPosition} on the waitlist</h2>
+          <h2>You're currently #{userPosition} on the waitlist</h2>
         </div>
       )}
-      
+
       <div className="waitlist-summary">
-        <h2 className="waitlist-title">Waitlist</h2>
-        <div className="waitlist-list">
-          {waitlist.length === 0 ? (
-            <p>No customers currently on the waitlist.</p>
-          ) : (
-            waitlist.map((customer, index) => (
-              <div key={index} className="waitlist-item">
-                <span className="waitlist-index">{index + 1}</span> 
-                <span className="waitlist-name">{customer.name}</span> - 
-                <span className="waitlist-party-size">Party of {customer.partySize}</span>
-              </div>
-            ))
-          )}
-        </div>
+        <h2>Waitlist</h2>
+        {waitlist.length === 0 ? (
+          <p>No customers currently on the waitlist.</p>
+        ) : (
+          waitlist.map((customer, index) => (
+            <div key={index}>
+              #{index + 1}: {customer.name} - Party of {customer.partySize}
+            </div>
+          ))
+        )}
+      </div>
+
+      <div className="occupancy-summary">
+        <h2>Current Occupancy</h2>
+        <p>{occupancy.toFixed(2)}% of the capacity is occupied.</p>
       </div>
     </div>
   );
 }
+
 
 export default UserDashboard;

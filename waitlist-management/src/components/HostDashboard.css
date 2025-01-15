@@ -1,82 +1,190 @@
-/* General Styling */
+/* General styling for the Host Dashboard */
 .host-dashboard {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  
-  .title {
-    text-align: center;
-    color: #333;
-  }
-  
-  .occupancy-section, .add-customer-section, .waitlist-section {
-    margin-bottom: 20px;
-  }
-  
-  .occupancy-range {
-    width: 100%;
-  }
-  
-  .customer-form input {
-    padding: 8px;
-    margin-right: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    width: 48%;
-  }
-  
-  .submit-button {
-    padding: 8px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    width: 48%; /* Makes the button width match the input */
-  }
-  
-  .submit-button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Waitlist Styling */
-  .waitlist-section {
-    margin-top: 20px;
-  }
-  
-  .waitlist-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .waitlist-item span {
-    font-size: 16px;
-  }
-  
-  .remove-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #d9534f;
-    font-size: 18px;
-  }
-  
-  .remove-button:hover {
-    color: #c9302c;
-  }
-  
-  .remove-button:focus {
-    outline: none;
-  }
-  
-  /* Headers */
-  .add-customer-section h2, .waitlist-section h2 {
-    color: #333;
-  }
-  
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+/* Section Styling */
+.waitlist-section,
+.seated-section {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.waitlist-section h2,
+.seated-section h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.5em;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.occupancy-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+/* List Item Styling */
+.waitlist-item,
+.seated-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.waitlist-item:last-child,
+.seated-item:last-child {
+  border-bottom: none;
+}
+
+/* Button Styling */
+.button-group button,
+.check-out-button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-group button:hover,
+.check-out-button:hover {
+  background: #0056b3;
+}
+
+.remove-button {
+  background: #dc3545;
+}
+
+.remove-button:hover {
+  background: #a71d2a;
+}
+
+.seat-button {
+  background: #28a745;
+}
+
+.seat-button:hover {
+  background: #1e7e34;
+}
+
+/* Form Styling */
+.add-customer-section {
+  margin-top: 20px;
+}
+
+.customer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.submit-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background: #28a745;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background: #1e7e34;
+}
+
+/* Occupancy Range Slider */
+.occupancy-range {
+  width: 100%;
+  margin-top: 10px;
+  appearance: none;
+  height: 5px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+.occupancy-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.occupancy-range::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure the modal appears above everything else */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+}
+
+.modal-close-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.modal-close-button:hover {
+  background-color: #45a049;
+}
+
+/* Ensure the waitlist and occupancy sections don't get blocked by the modal */
+.host-dashboard {
+  position: relative;
+}
+
+.occupancy-section {
+  position: relative;
+  z-index: 1; /* Ensure it's above the background */
+}
+

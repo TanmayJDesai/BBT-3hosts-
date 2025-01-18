@@ -1,30 +1,30 @@
 import mongoose from 'mongoose';
 
 const restaurantSchema = mongoose.Schema({
+    id:{
+        type: Number,
+        required: true
+    },
     name:{
         type: String,
         required: true
     },
-    owner_name:{
+    location:{
         type: String,
         required: true
     },
-    owner_number:{
+    waitlistCount:{
         type: Number,
         required: true
     },
-    occupancy:{
+    occupancyPercentage:{
         type: Number,
-        required: false
-    },
-    email:{
-        type: String,
         required: true
     },
-    password:{
+    phoneNumber:{
         type: String,
         required: true
-    },
+    }
 }, {
     timestamps: true //createdAt, updatedAt, might be useful idk
 });

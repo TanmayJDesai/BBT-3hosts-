@@ -1,10 +1,34 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js'
+import Restaurant from './models/restaurant.model.js';
 
 dotenv.config();
 
 const app = express();
+
+app.use(express.json());
+
+app.post("/api/restaurants", async (req, res) => {
+    const restaurant = req.body;
+
+    // Validation for missing fields
+    if (!restaurant.id || !restaurant.name || !restaurant.location || !restaurant.waitlistCount || !restaurant.occupancyPercentage || !restaurant.phoneNumber) {
+        return res.status(400).json({ success: false, message: "Please provide all required fields." });
+    }
+
+    // Create a new restaurant object
+    const newRest = new Restaurant(restaurant);
+
+    try {
+        // Save the restaurant object to the database
+        await newRest.save();  // Corrected to save the `newRest` object
+        res.status(201).json({ success: true, data: newRest });
+    } catch (error) {
+        console.error("ERROR: Unable to create Restaurant:", error.message);
+        res.status(500).json({ success: false, message: "Server Error." });
+    }
+});
 
 app.get("/", (req,res) => {
     res.send("hello world");

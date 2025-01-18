@@ -1,5 +1,5 @@
 import express from 'express';
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'; 
 import { connectDB } from './config/db.js'
 import Restaurant from './models/restaurant.model.js';
 
@@ -12,17 +12,17 @@ app.use(express.json());
 app.post("/api/restaurants", async (req, res) => {
     const restaurant = req.body;
 
-    // Validation for missing fields
+    // validation for missing fields, we want complete object to be sent
     if (!restaurant.id || !restaurant.name || !restaurant.location || !restaurant.waitlistCount || !restaurant.occupancyPercentage || !restaurant.phoneNumber) {
         return res.status(400).json({ success: false, message: "Please provide all required fields." });
     }
 
-    // Create a new restaurant object
+    // creates a new restaurant object
     const newRest = new Restaurant(restaurant);
 
     try {
-        // Save the restaurant object to the database
-        await newRest.save();  // Corrected to save the `newRest` object
+        // the part that will actually save the restaurant object to the database
+        await newRest.save(); 
         res.status(201).json({ success: true, data: newRest });
     } catch (error) {
         console.error("ERROR: Unable to create Restaurant:", error.message);

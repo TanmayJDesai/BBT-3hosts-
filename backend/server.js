@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 
 app.get("/", (req,res) => {
-    res.send("I love u!!!");
+    res.send("hello world");
 });
 
 console.log(process.env.MONGO_URI);

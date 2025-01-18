@@ -24,6 +24,14 @@ const restaurantSchema = mongoose.Schema({
     phoneNumber:{
         type: String,
         required: true
+    },
+    email:{
+        type: String,
+        required: true
+    },
+    password:{
+        type: String,
+        required: true,
     }
 }, {
     timestamps: true //createdAt, updatedAt, might be useful idk

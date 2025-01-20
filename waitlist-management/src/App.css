@@ -1,11 +1,63 @@
 /* App.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Robot:wght@400;700&display=swap');
+
+/* animation for sliding down from off screen */
+@keyframes slideDown{
+  from {
+    transform: translateY(-100%); /* Start off screen */
+    opacity: 0; /* invisible */
+  }
+  to {
+    transform: translateY(0); /* End at original position */
+    opacity: 1; /* fully visible */
+  }
+}
+
+/* animation for sliding right from off screen */ 
+@keyframes slideRight{
+  from {
+    transform: translateX(-100%); /* Start off screen */
+    opacity: 0; /* invisible */
+  }
+  to {
+    transform: translateX(0); /* End at original position */
+    opacity: 1; /* fully visible */
+  }
+}
+
+/* animation for sliding up from off screen */
+@keyframes slideUp{
+  from {
+    transform: translateY(100%); /* Start off screen */
+    opacity: 0; /* invisible */
+  }
+  to {
+    transform: translateY(0); /* End at original position */
+    opacity: 1; /* fully visible */
+  }
+}
+
+/* Global Reset */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f3f4f6;
+}
+
 /* Container for the whole app */
 .app-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Ensure the footer stays at the bottom */
   background-color: #f3f4f6; /* Light background */
+  transition: background-color 0.5s ease; /* transitions */
+}
+
+/* for hover effects */
+.app-container:hover {
+  background-color: #eaf2f8;
 }
 
 /* Header with the company title */
@@ -14,6 +66,17 @@
   background-color: #3498db; /* Blue background */
   color: white;
   padding: 50px;
+  font-weight: 700; /* bold title */
+  letter-spacing: 1.5px; /* spacing between letters */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  border-radius: 0 0 10px 10px; /* round bottom corners */
+}
+
+/* slides title down from offscreen */
+.app-header h1 {
+  animation: slideDown 2s ease-out;
+  opacity: 1;
+  font-size: 3rem;
 }
 
 /* Style for the main content area */
@@ -26,10 +89,54 @@
   flex-direction: column;
 }
 
+/* slides main content from offscreen */
+.app-main-content {
+  animation: slideRight 2s ease-out;
+  opacity: 1;
+  font-size: 1rem;
+}
+
 /* Footer with the contact info */
 .app-footer {
   background-color: #2980b9; /* Darker blue */
   color: white;
   text-align: center;
   padding: 25px;
+  font-weight: 400;
+  box-shadow: 9 -4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.app-footer a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* slides footer from offscreen */
+.app-footer {
+  animation: slideUp 2s ease-out;
+  opacity: 1;
+  font-size: 1rem;
+}
+
+.app-footer a:hover {
+  color: #f39c12;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 30px;
+    font-size: 1.5rem;
+  }
+
+  .app-main-content {
+    padding: 20px;
+  }
+
+  .app-footer {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+}
+
